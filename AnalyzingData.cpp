@@ -135,7 +135,24 @@ void AnalyzingData::addAdditionalBiome(string name) {
     additional_biomes_names.push_back(name);
 }
 
-void AnalyzingData::checkData() {
+/*void AnalyzingData::filterData() {
+    filterMainBiomes();
+}
+
+void AnalyzingData::filterMainBiomes() {
+    for (int i = main_biomes_names.size() - 1; i >= 0; i--) {
+        if (main_biomes_squares[i] < 5) {
+            main_biomes_squares.erase(main_biomes_squares.cbegin() + i);
+            main_biomes_names.erase(main_biomes_names.cbegin() + i);
+        }
+    }
+}
+
+void AnalyzingData::filterMakeProductionResources() {
+
+}*/
+
+/*void AnalyzingData::checkData() {
     cout << "Make product resources:" << endl;
     for (int i = 0; i < make_production_resources_names.size(); i++) {
         cout << make_production_resources_names[i] << ": " << make_production_resources_values[i] << endl;
@@ -171,4 +188,4 @@ void AnalyzingData::checkData() {
         cout << i << endl;
     }
     cout << endl;
-}
+}*/

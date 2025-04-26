@@ -19,6 +19,12 @@ class AnalyzingData {
     vector<double> main_biomes_squares;
     vector<string> additional_biomes_names;
 
+    /*void filterMakeProductionResources();
+    void filterMakeFoodResources();
+    void filterImportProductionResources();
+    void filterImportFoodResources();
+    void filterMainBiomes();*/
+
 
 public:
     AnalyzingData();
@@ -29,8 +35,9 @@ public:
     void addMainBiome(string name, double square);
     void addAdditionalBiome(string name);
     void clearData();
+    //void filterData();
 
-    void checkData();
+    //void checkData();
 };
 
 #endif // ANALYZINGDATA_H

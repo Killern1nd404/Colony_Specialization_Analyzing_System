@@ -64,5 +64,7 @@ void AnalyzingSystem::setAnalyzingData() {
         data.addAdditionalBiome(ui->additional_biomes_table->item(i, 0)->text().toStdString());
     }
 
-    data.checkData();
+    //data.filterData();
+
+    //data.checkData();
 }
