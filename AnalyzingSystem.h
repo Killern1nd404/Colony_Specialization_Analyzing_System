@@ -2,6 +2,7 @@
 #define ANALYZINGSYSTEM_H
 
 #include <QMainWindow>
+#include "AnalyzingData.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -9,9 +10,9 @@ class AnalyzingSystem;
 }
 QT_END_NAMESPACE
 
-class AnalyzingSystem : public QMainWindow
-{
+class AnalyzingSystem : public QMainWindow {
     Q_OBJECT
+    AnalyzingData data;
 
 public:
     AnalyzingSystem(QWidget *parent = nullptr);
@@ -19,5 +20,11 @@ public:
 
 private:
     Ui::AnalyzingSystem *ui;
+
+private slots:
+    void setAnalyzingData();
+    void addBiome();
+    void addAdditionalBiome();
 };
+
 #endif // ANALYZINGSYSTEM_H

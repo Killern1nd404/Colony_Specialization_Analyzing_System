@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1064</width>
-    <height>625</height>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
     <property name="title">
      <string>Возможные для заселения биомы</string>
     </property>
-    <widget class="QComboBox" name="biom_input">
+    <widget class="QComboBox" name="biome_input">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -61,7 +61,7 @@
       </property>
      </item>
     </widget>
-    <widget class="QDoubleSpinBox" name="biom_square_input">
+    <widget class="QDoubleSpinBox" name="biome_square_input">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -94,7 +94,7 @@
       <rect>
        <x>110</x>
        <y>30</y>
-       <width>63</width>
+       <width>81</width>
        <height>20</height>
       </rect>
      </property>
@@ -102,7 +102,7 @@
       <string>Площадь</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="add_biom_button">
+    <widget class="QPushButton" name="add_biome_button">
      <property name="geometry">
       <rect>
        <x>200</x>
@@ -175,7 +175,7 @@
     <property name="title">
      <string>Дополнительные доступные биомы</string>
     </property>
-    <widget class="QComboBox" name="additional_biom_input">
+    <widget class="QComboBox" name="additional_biome_input">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -218,7 +218,7 @@
       <string>Биом</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="add_additional_biom_button">
+    <widget class="QPushButton" name="add_additional_biome_button">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -973,6 +973,19 @@
       <string>~тыс. м³</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="start_analysis_button">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>580</y>
+      <width>221</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Начать анализ</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
