@@ -1,6 +1,7 @@
 #include "AnalyzingSystem.h"
 #include "./ui_AnalyzingSystem.h"
 #include <QTableWidgetItem>
+#include "LanshaftAnalyzer.h"
 #include <iostream>
 
 using namespace std;
@@ -8,7 +9,7 @@ using namespace std;
 AnalyzingSystem::AnalyzingSystem(QWidget *parent) : QMainWindow(parent), ui(new Ui::AnalyzingSystem) {
     ui->setupUi(this);
 
-    connect(ui->start_analysis_button, &QPushButton::clicked, this, &AnalyzingSystem::setAnalyzingData);
+    connect(ui->start_analysis_button, &QPushButton::clicked, this, &AnalyzingSystem::startAnalysis);
     connect(ui->add_biome_button, &QPushButton::clicked, this, &AnalyzingSystem::addBiome);
     connect(ui->add_additional_biome_button, &QPushButton::clicked, this, &AnalyzingSystem::addAdditionalBiome);
 }
@@ -67,4 +68,16 @@ void AnalyzingSystem::setAnalyzingData() {
     //data.filterData();
 
     //data.checkData();
+}
+
+void AnalyzingSystem::startAnalysis() {
+    setAnalyzingData();
+
+    LanshaftAnalyzer lanshaft_analyzer(&data);
+    try {
+        lanshaft_analyzer();
+        cout << "No bebra" << endl;
+    } catch (MissingSuitableBiome error) {
+        cout << "Bebra" << endl;
+    }
 }

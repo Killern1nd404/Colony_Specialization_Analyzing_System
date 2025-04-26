@@ -25,6 +25,7 @@ private slots:
     void setAnalyzingData();
     void addBiome();
     void addAdditionalBiome();
+    void startAnalysis();
 };
 
 #endif // ANALYZINGSYSTEM_H

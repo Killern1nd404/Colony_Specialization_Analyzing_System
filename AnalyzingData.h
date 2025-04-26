@@ -36,6 +36,9 @@ public:
     void addAdditionalBiome(string name);
     void clearData();
     //void filterData();
+    void filterMainBiomes();
+    vector<string> getMainBiomesNames() {return main_biomes_names;};
+    vector<double> getMainBiomesSquares() {return main_biomes_squares;};
 
     //void checkData();
 };

@@ -137,7 +137,7 @@ void AnalyzingData::addAdditionalBiome(string name) {
 
 /*void AnalyzingData::filterData() {
     filterMainBiomes();
-}
+}*/
 
 void AnalyzingData::filterMainBiomes() {
     for (int i = main_biomes_names.size() - 1; i >= 0; i--) {
@@ -148,7 +148,7 @@ void AnalyzingData::filterMainBiomes() {
     }
 }
 
-void AnalyzingData::filterMakeProductionResources() {
+/*void AnalyzingData::filterMakeProductionResources() {
 
 }*/
 
