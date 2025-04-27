@@ -7,15 +7,15 @@
 
 using namespace std;
 
-class MissingSuitableBiome {
+class SuitableBiomeNotFounded {
 public:
-    MissingSuitableBiome() {};
+    SuitableBiomeNotFounded() {};
 };
 
 class LanshaftAnalyzer {
     AnalyzingData *data;
 
-    void calculateCoefficients();
+    OptimalBiome calculateCoefficients();
 
 public:
     LanshaftAnalyzer(AnalyzingData *data) : data(data) {};

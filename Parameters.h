@@ -45,7 +45,7 @@ struct ResourcesRequirements {
     double coal;
     double iron;
 
-    ResourcesRequirements(double stone, double wood, double clay, double coal, double iron) : stone(stone), wood(wood), clay(clay),
+    ResourcesRequirements(double stone, double wood, double clay, double iron, double coal) : stone(stone), wood(wood), clay(clay),
         coal(coal), iron(iron) {};
     /*double getStone() {return stone;};
     double getWood() {return wood;};
@@ -59,19 +59,47 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
     //string biome;
     //string square;
 
+    OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0) {};
     OptimalBiome(ResourcesRequirements data, string biome, double square) : Biome(biome, square),
-        ResourcesRequirements(data.stone, data.wood, data.clay, data.coal, data.iron) {};
+        ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal) {};
+    void setBiome(string name, double square, double stone, double wood, double clay, double iron, double coal) {
+        this->name = name;
+        this->square = square;
+        this->stone = stone;
+        this->wood = wood;
+        this->clay = clay;
+        this->iron = iron;
+        this->coal = coal;
+    };
+    void operator=(OptimalBiome &other) {
+        this->name = other.name;
+        this->square = other.square;
+        this->stone = other.stone;
+        this->wood = other.wood;
+        this->clay = other.clay;
+        this->iron = other.iron;
+        this->coal = other.coal;
+    }
+    /*void setBiome(OptimalBiome biome) {
+        this->name = biome.name;
+        this->square = biome.square;
+        this->stone = biome.stone;
+        this->wood = biome.wood;
+        this->clay = biome.clay;
+        this->iron = biome.iron;
+        this->coal = biome.coal;
+    };*/
 };
 
 // Структура основных параметров
 struct Parameters {
     // Возможные требования для развития инфраструктуры в биомах
     map<string, vector<ResourcesRequirements>> biomes_requirements = {
-        {"PLAIN", {{10, 3, 2, 0, 1}, {8, 2, 2, 0, 3}, {2, 4, 8, 0, 2}}},
-        {"HILLS", {{12, 4, 3, 0, 1}, {9, 3, 3, 0, 3}, {3, 5, 9, 0, 2}}},
-        {"MOUNTAINS", {{10, 18, 0, 0, 6}, {4, 18, 8, 0, 6}}},
-        {"SWAMP", {{10, 15, 0, 0, 4}, {4, 18, 6, 0, 4}}},
-        {"FOREST", {{10, 3, 2, 0, 2}, {8, 2, 2, 0, 4}, {2, 4, 8, 0, 3}}}
+        {"PLAIN", {{10, 3, 2, 1, 0}, {8, 2, 2, 3, 0}, {2, 4, 8, 2, 0}}},
+        {"HILLS", {{12, 4, 3, 1, 0}, {9, 3, 3, 3, 0}, {3, 5, 9, 2, 0}}},
+        {"MOUNTAINS", {{10, 18, 0, 6, 0}, {4, 18, 8, 6, 0}}},
+        {"SWAMP", {{10, 15, 0, 4, 0}, {4, 18, 6, 4, 0}}},
+        {"FOREST", {{10, 3, 2, 2, 0}, {8, 2, 2, 4, 0}, {2, 4, 8, 3, 0}}}
     };
     // Параметры питательности пищевых продуктов
     map<string, double> food_resources_nutritional_value = {
@@ -80,6 +108,16 @@ struct Parameters {
         {"FISH", 1.5},
         {"MEAT", 1.5}
     };
+    // Приведение названий биомов
+    map<string, string> biomes_brinding = {
+        {"Равнина", "PLAIN"},
+        {"Болото", "SWAMP"},
+        {"Горы", "MOUNTAINS"},
+        {"Холмы", "HILLS"},
+        {"Лес", "FOREST"}
+    };
+    // Минимальное площадь биома для организации колонии
+    double min_required_square = 5;
 
     //Parameters() {};
 };
