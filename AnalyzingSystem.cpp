@@ -76,8 +76,7 @@ void AnalyzingSystem::startAnalysis() {
     LanshaftAnalyzer lanshaft_analyzer(&data);
     try {
         lanshaft_analyzer();
-        cout << "No bebra" << endl;
     } catch (MissingSuitableBiome error) {
-        cout << "Bebra" << endl;
+        cout << "Not nice biome Bebra" << endl;
     }
 }

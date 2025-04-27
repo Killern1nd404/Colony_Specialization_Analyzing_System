@@ -3,11 +3,12 @@
 
 #include <vector>
 #include <string>
+#include "Parameters.h"
 
 using namespace std;
 
 class AnalyzingData {
-    vector<string> make_production_resources_names;
+    /*vector<string> make_production_resources_names;
     vector<double> make_production_resources_values;
     vector<string> make_food_resources_names;
     vector<double> make_food_resources_values;
@@ -17,7 +18,16 @@ class AnalyzingData {
     vector<double> import_food_resources_values;
     vector<string> main_biomes_names;
     vector<double> main_biomes_squares;
-    vector<string> additional_biomes_names;
+    vector<string> additional_biomes_names;*/
+
+    vector<Resource> make_production_resources;
+    vector<FoodResource> make_food_resources;
+    vector<Resource> import_production_resources;
+    vector<FoodResource> import_food_resources;
+    vector<Biome> main_biomes;
+    vector<AdditionalBiome> additional_biomes;
+
+    Parameters parameters;
 
     /*void filterMakeProductionResources();
     void filterMakeFoodResources();
@@ -36,9 +46,11 @@ public:
     void addAdditionalBiome(string name);
     void clearData();
     //void filterData();
-    void filterMainBiomes();
-    vector<string> getMainBiomesNames() {return main_biomes_names;};
-    vector<double> getMainBiomesSquares() {return main_biomes_squares;};
+    //void filterMainBiomes();
+    //vector<string> getMainBiomesNames() {return main_biomes_names;};
+    //vector<double> getMainBiomesSquares() {return main_biomes_squares;};
+    vector<Biome> getMainBiomes() {return main_biomes;};
+    //map<string, double> getFoodNutritionalValue() {return parameters.food_resources_nutritional_value;};
 
     //void checkData();
 };

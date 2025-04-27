@@ -2,7 +2,7 @@
 #define LANSHAFTANALYZER_H
 
 #include "AnalyzingData.h"
-//#include "Paremeters.h"
+#include "Parameters.h"
 #include <string>
 
 using namespace std;
@@ -11,14 +11,6 @@ class MissingSuitableBiome {
 public:
     MissingSuitableBiome() {};
 };
-
-/*class OptimalBiome : public ResourcesRequirements {
-    string biome;
-
-public:
-    OptimalBiome(ResourcesRequirements data, string biome) : ResourcesRequirements(data.getStone(), data.getWood(), data.getClay(),
-                                data.getCoal(), data.getIron()), biome(biome) {};
-};*/
 
 class LanshaftAnalyzer {
     AnalyzingData *data;

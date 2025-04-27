@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Parameters.h"
 
 using namespace std;
 
@@ -36,8 +37,8 @@ AnalyzingData::AnalyzingData() {
 */
 
 void AnalyzingData::clearData() {
-    if (!make_production_resources_names.empty()) {
-        make_production_resources_names.clear();
+    if (!make_production_resources.empty()) {
+        /*make_production_resources_names.clear();
         make_production_resources_values.clear();
         import_production_resources_names.clear();
         import_production_resources_values.clear();
@@ -47,12 +48,31 @@ void AnalyzingData::clearData() {
         import_food_resources_values.clear();
         main_biomes_names.clear();
         main_biomes_squares.clear();
-        additional_biomes_names.clear();
+        additional_biomes_names.clear();*/
+
+        make_production_resources.clear();
+        make_food_resources.clear();
+        import_production_resources.clear();
+        import_food_resources.clear();
+        main_biomes.clear();
+        additional_biomes.clear();
     }
 }
 
 void AnalyzingData::addMakingProductionResource(string name, double value) {
     bool is_added = false;
+    for (int i = 0; i < make_production_resources.size(); i++) {
+        if (value >= make_production_resources[i].max_value) {
+            make_production_resources.insert(make_production_resources.cbegin() + i, {name, value});
+            is_added = true;
+            break;
+        }
+    }
+    if (!is_added) {
+        make_production_resources.push_back({name, value});
+    }
+
+    /*bool is_added = false;
     for (int i = 0; i < make_production_resources_names.size(); i++) {
         if (value >= make_production_resources_values[i]) {
             make_production_resources_values.insert(make_production_resources_values.cbegin() + i, value);
@@ -64,11 +84,24 @@ void AnalyzingData::addMakingProductionResource(string name, double value) {
     if (!is_added) {
         make_production_resources_values.push_back(value);
         make_production_resources_names.push_back(name);
-    }
+    }*/
 }
 
 void AnalyzingData::addMakingFoodResource(string name, double value) {
     bool is_added = false;
+    for (int i = 0; i < make_food_resources.size(); i++) {
+        if (value >= make_food_resources[i].max_value) {
+            make_food_resources.insert(make_food_resources.cbegin(),
+                                       {name, value, parameters.food_resources_nutritional_value[name]});
+            is_added = true;
+            break;
+        }
+    }
+    if (!is_added) {
+        make_food_resources.push_back({name, value, parameters.food_resources_nutritional_value[name]});
+    }
+
+    /*bool is_added = false;
     for (int i = 0; i < make_food_resources_names.size(); i++) {
         if (value >= make_food_resources_values[i]) {
             make_food_resources_values.insert(make_food_resources_values.cbegin() + i, value);
@@ -80,11 +113,23 @@ void AnalyzingData::addMakingFoodResource(string name, double value) {
     if (!is_added) {
         make_food_resources_values.push_back(value);
         make_food_resources_names.push_back(name);
-    }
+    }*/
 }
 
 void AnalyzingData::addImportingProductionResource(string name, double value) {
     bool is_added = false;
+    for (int i = 0; i < import_production_resources.size(); i++) {
+        if (value >= import_production_resources[i].max_value) {
+            import_production_resources.insert(import_production_resources.cbegin() + i, {name, value});
+            is_added = true;
+            break;
+        }
+    }
+    if (!is_added) {
+        import_production_resources.push_back({name, value});
+    }
+
+    /*bool is_added = false;
     for (int i = 0; i < import_production_resources_names.size(); i++) {
         if (value >= import_production_resources_values[i]) {
             import_production_resources_values.insert(import_production_resources_values.cbegin() + i, value);
@@ -96,11 +141,24 @@ void AnalyzingData::addImportingProductionResource(string name, double value) {
     if (!is_added) {
         import_production_resources_values.push_back(value);
         import_production_resources_names.push_back(name);
-    }
+    }*/
 }
 
 void AnalyzingData::addImportingFoodResource(string name, double value) {
     bool is_added = false;
+    for (int i = 0; i < import_food_resources.size(); i++) {
+        if (value >= import_food_resources[i].max_value) {
+            import_food_resources.insert(import_food_resources.cbegin() + i,
+                                         {name, value, parameters.food_resources_nutritional_value[name]});
+            is_added = true;
+            break;
+        }
+    }
+    if (!is_added) {
+        import_food_resources.push_back({name, value, parameters.food_resources_nutritional_value[name]});
+    }
+
+    /*bool is_added = false;
     for (int i = 0; i < import_food_resources_names.size(); i++) {
         if (value >= import_food_resources_values[i]) {
             import_food_resources_values.insert(import_food_resources_values.cbegin() + i, value);
@@ -112,11 +170,23 @@ void AnalyzingData::addImportingFoodResource(string name, double value) {
     if (!is_added) {
         import_food_resources_values.push_back(value);
         import_food_resources_names.push_back(name);
-    }
+    }*/
 }
 
 void AnalyzingData::addMainBiome(string name, double square) {
     bool is_added = false;
+    for (int i = 0; i < main_biomes.size(); i++) {
+        if (square >= main_biomes[i].square) {
+            main_biomes.insert(main_biomes.cbegin() + i, {name, square});
+            is_added = true;
+            break;
+        }
+    }
+    if (!is_added) {
+        main_biomes.push_back({name, square});
+    }
+
+    /*bool is_added = false;
     for (int i = 0; i < main_biomes_names.size(); i++) {
         if (square >= main_biomes_squares[i]) {
             main_biomes_squares.insert(main_biomes_squares.cbegin() + i, square);
@@ -128,25 +198,26 @@ void AnalyzingData::addMainBiome(string name, double square) {
     if (!is_added) {
         main_biomes_squares.push_back(square);
         main_biomes_names.push_back(name);
-    }
+    }*/
 }
 
 void AnalyzingData::addAdditionalBiome(string name) {
-    additional_biomes_names.push_back(name);
+    additional_biomes.push_back({name});
+    //additional_biomes_names.push_back(name);
 }
 
 /*void AnalyzingData::filterData() {
     filterMainBiomes();
 }*/
 
-void AnalyzingData::filterMainBiomes() {
+/*void AnalyzingData::filterMainBiomes() {
     for (int i = main_biomes_names.size() - 1; i >= 0; i--) {
         if (main_biomes_squares[i] < 5) {
             main_biomes_squares.erase(main_biomes_squares.cbegin() + i);
             main_biomes_names.erase(main_biomes_names.cbegin() + i);
         }
     }
-}
+}*/
 
 /*void AnalyzingData::filterMakeProductionResources() {
 
@@ -188,4 +259,9 @@ void AnalyzingData::filterMainBiomes() {
         cout << i << endl;
     }
     cout << endl;
+
+    cout << "___" << endl;
+    for (Resource res : make_production_resources) {
+        cout << res.name << " " << res.max_value << endl;
+    }
 }*/
