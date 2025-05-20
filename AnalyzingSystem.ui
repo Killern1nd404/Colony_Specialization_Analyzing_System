@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1064</width>
+    <width>1100</width>
     <height>668</height>
    </rect>
   </property>
@@ -629,7 +629,7 @@
      <rect>
       <x>680</x>
       <y>10</y>
-      <width>371</width>
+      <width>410</width>
       <height>281</height>
      </rect>
     </property>
@@ -639,9 +639,9 @@
     <widget class="QDoubleSpinBox" name="import_stone_input">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>115</x>
        <y>30</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -714,9 +714,9 @@
     <widget class="QDoubleSpinBox" name="import_wood_input">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>115</x>
        <y>60</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -724,9 +724,9 @@
     <widget class="QDoubleSpinBox" name="import_clay_input">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>115</x>
        <y>90</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -734,9 +734,9 @@
     <widget class="QDoubleSpinBox" name="import_iron_input">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>115</x>
        <y>120</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -744,9 +744,9 @@
     <widget class="QDoubleSpinBox" name="import_coal_input">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>115</x>
        <y>150</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -754,7 +754,7 @@
     <widget class="QLabel" name="label_27">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>185</x>
        <y>30</y>
        <width>63</width>
        <height>20</height>
@@ -767,7 +767,7 @@
     <widget class="QLabel" name="label_28">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>185</x>
        <y>60</y>
        <width>63</width>
        <height>20</height>
@@ -780,7 +780,7 @@
     <widget class="QLabel" name="label_29">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>185</x>
        <y>90</y>
        <width>63</width>
        <height>20</height>
@@ -793,7 +793,7 @@
     <widget class="QLabel" name="label_30">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>185</x>
        <y>120</y>
        <width>63</width>
        <height>20</height>
@@ -806,7 +806,7 @@
     <widget class="QLabel" name="label_31">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>185</x>
        <y>150</y>
        <width>63</width>
        <height>20</height>
@@ -816,13 +816,128 @@
       <string>~тыс. м³</string>
      </property>
     </widget>
+    <widget class="QDoubleSpinBox" name="import_price_stone_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>30</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_40">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>30</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_wood_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>60</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_clay_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_iron_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>120</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_coal_import">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>150</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_45">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_46">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>90</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_47">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>120</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_48">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>150</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_6">
     <property name="geometry">
      <rect>
       <x>680</x>
       <y>290</y>
-      <width>371</width>
+      <width>410</width>
       <height>281</height>
      </rect>
     </property>
@@ -832,9 +947,9 @@
     <widget class="QDoubleSpinBox" name="import_fruit_input">
      <property name="geometry">
       <rect>
-       <x>125</x>
+       <x>115</x>
        <y>30</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -894,9 +1009,9 @@
     <widget class="QDoubleSpinBox" name="import_fish_input">
      <property name="geometry">
       <rect>
-       <x>125</x>
+       <x>115</x>
        <y>60</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -904,9 +1019,9 @@
     <widget class="QDoubleSpinBox" name="import_seed_input">
      <property name="geometry">
       <rect>
-       <x>125</x>
+       <x>115</x>
        <y>90</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -914,9 +1029,9 @@
     <widget class="QDoubleSpinBox" name="import_meat_input">
      <property name="geometry">
       <rect>
-       <x>125</x>
+       <x>115</x>
        <y>120</y>
-       <width>111</width>
+       <width>65</width>
        <height>25</height>
       </rect>
      </property>
@@ -924,7 +1039,7 @@
     <widget class="QLabel" name="label_36">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>185</x>
        <y>30</y>
        <width>63</width>
        <height>20</height>
@@ -937,7 +1052,7 @@
     <widget class="QLabel" name="label_37">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>185</x>
        <y>60</y>
        <width>63</width>
        <height>20</height>
@@ -950,7 +1065,7 @@
     <widget class="QLabel" name="label_38">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>185</x>
        <y>90</y>
        <width>63</width>
        <height>20</height>
@@ -963,7 +1078,7 @@
     <widget class="QLabel" name="label_39">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>185</x>
        <y>120</y>
        <width>63</width>
        <height>20</height>
@@ -973,18 +1088,156 @@
       <string>~тыс. м³</string>
      </property>
     </widget>
+    <widget class="QDoubleSpinBox" name="import_price_fruit_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>30</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_41">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>30</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_fish_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>60</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_seed_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>90</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="import_price_meat_input">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>120</y>
+       <width>65</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>60</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>90</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_44">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>120</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>руб./тыс. м³</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="start_analysis_button">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>580</y>
-      <width>221</width>
-      <height>29</height>
+      <x>10</x>
+      <y>585</y>
+      <width>220</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
      <string>Начать анализ</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="human_number_input">
+    <property name="geometry">
+     <rect>
+      <x>1025</x>
+      <y>580</y>
+      <width>65</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_49">
+    <property name="geometry">
+     <rect>
+      <x>825</x>
+      <y>580</y>
+      <width>195</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Начальное кол-во человек:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="money_number_input">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>580</y>
+      <width>65</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_50">
+    <property name="geometry">
+     <rect>
+      <x>494</x>
+      <y>580</y>
+      <width>251</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Начальное финансирование (руб.):</string>
     </property>
    </widget>
   </widget>
@@ -993,7 +1246,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1064</width>
+     <width>1100</width>
      <height>25</height>
     </rect>
    </property>
