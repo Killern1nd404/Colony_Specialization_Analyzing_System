@@ -116,17 +116,17 @@ void AnalyzingData::addMakingFoodResource(string name, double value) {
     }*/
 }
 
-void AnalyzingData::addImportingProductionResource(string name, double value) {
+void AnalyzingData::addImportingProductionResource(string name, double value, double price) {
     bool is_added = false;
     for (int i = 0; i < import_production_resources.size(); i++) {
         if (value >= import_production_resources[i].max_value) {
-            import_production_resources.insert(import_production_resources.cbegin() + i, {name, value});
+            import_production_resources.insert(import_production_resources.cbegin() + i, {name, value, price});
             is_added = true;
             break;
         }
     }
     if (!is_added) {
-        import_production_resources.push_back({name, value});
+        import_production_resources.push_back({name, value, price});
     }
 
     /*bool is_added = false;
@@ -144,18 +144,18 @@ void AnalyzingData::addImportingProductionResource(string name, double value) {
     }*/
 }
 
-void AnalyzingData::addImportingFoodResource(string name, double value) {
+void AnalyzingData::addImportingFoodResource(string name, double value, double price) {
     bool is_added = false;
     for (int i = 0; i < import_food_resources.size(); i++) {
         if (value >= import_food_resources[i].max_value) {
             import_food_resources.insert(import_food_resources.cbegin() + i,
-                                         {name, value, parameters.food_resources_nutritional_value[name]});
+                                         {name, value, price, parameters.food_resources_nutritional_value[name]});
             is_added = true;
             break;
         }
     }
     if (!is_added) {
-        import_food_resources.push_back({name, value, parameters.food_resources_nutritional_value[name]});
+        import_food_resources.push_back({name, value, price, parameters.food_resources_nutritional_value[name]});
     }
 
     /*bool is_added = false;

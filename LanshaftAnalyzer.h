@@ -14,11 +14,12 @@ public:
 
 class LanshaftAnalyzer {
     AnalyzingData *data;
+    double left_money;
 
     OptimalBiome calculateCoefficients();
 
 public:
-    LanshaftAnalyzer(AnalyzingData *data) : data(data) {};
+    LanshaftAnalyzer(AnalyzingData *data, double money) : data(data), left_money(money) {};
     void operator()();
 };
 

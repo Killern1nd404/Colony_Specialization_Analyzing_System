@@ -5,6 +5,7 @@
 #include <iostream>
 #include <map>
 #include "Parameters.h"
+#include "FoodRequirementsAnalyzer.h"
 
 using namespace std;
 
@@ -68,16 +69,16 @@ void AnalyzingSystem::setAnalyzingData() {
     data.addMakingFoodResource("SEED", ui->make_seed_input->value());
     data.addMakingFoodResource("MEAT", ui->make_meat_input->value());
 
-    data.addImportingProductionResource("STONE", ui->import_stone_input->value());
-    data.addImportingProductionResource("WOOD", ui->import_wood_input->value());
-    data.addImportingProductionResource("CLAY", ui->import_clay_input->value());
-    data.addImportingProductionResource("IRON", ui->import_iron_input->value());
-    data.addImportingProductionResource("COAL", ui->import_coal_input->value());
+    data.addImportingProductionResource("STONE", ui->import_stone_input->value(), ui->import_price_stone_input->value());
+    data.addImportingProductionResource("WOOD", ui->import_wood_input->value(), ui->import_price_wood_input->value());
+    data.addImportingProductionResource("CLAY", ui->import_clay_input->value(), ui->import_price_clay_input->value());
+    data.addImportingProductionResource("IRON", ui->import_iron_input->value(), ui->import_price_iron_input->value());
+    data.addImportingProductionResource("COAL", ui->import_coal_input->value(), ui->import_price_coal_input->value());
 
-    data.addImportingFoodResource("FRUIT", ui->import_fruit_input->value());
-    data.addImportingFoodResource("FISH", ui->import_fish_input->value());
-    data.addImportingFoodResource("SEED", ui->import_seed_input->value());
-    data.addImportingFoodResource("MEAT", ui->import_meat_input->value());
+    data.addImportingFoodResource("FRUIT", ui->import_fruit_input->value(), ui->import_price_fruit_input->value());
+    data.addImportingFoodResource("FISH", ui->import_fish_input->value(), ui->import_price_fish_input->value());
+    data.addImportingFoodResource("SEED", ui->import_seed_input->value(), ui->import_price_seed_input->value());
+    data.addImportingFoodResource("MEAT", ui->import_meat_input->value(), ui->import_price_meat_input->value());
 
     /*for (int i = 0; i < ui->biomes_table->rowCount(); i++) {
         string square = ui->biomes_table->item(i, 1)->text().toStdString();
@@ -102,12 +103,16 @@ void AnalyzingSystem::setAnalyzingData() {
     //data.filterData();
 
     //data.checkData();
+    data.setHumanNumber(ui->human_number_input->value());
+    data.setMoney(ui->money_number_input->value());
 }
 
 void AnalyzingSystem::startAnalysis() {
     setAnalyzingData();
 
-    LanshaftAnalyzer lanshaft_analyzer(&data);
+    FoodRequirementsAnalyzer food_analyzer(&data);
+    food_analyzer();
+    LanshaftAnalyzer lanshaft_analyzer(&data, data.getMoney());
     try {
         lanshaft_analyzer();
         OptimalBiome biome = data.getOptimalBiome();

@@ -869,7 +869,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="import_price_coal_import">
+    <widget class="QDoubleSpinBox" name="import_price_coal_input">
      <property name="geometry">
       <rect>
        <x>250</x>
@@ -1217,16 +1217,6 @@
      <string>Начальное кол-во человек:</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="money_number_input">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>580</y>
-      <width>65</width>
-      <height>30</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_50">
     <property name="geometry">
      <rect>
@@ -1238,6 +1228,16 @@
     </property>
     <property name="text">
      <string>Начальное финансирование (руб.):</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="money_number_input">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>580</y>
+      <width>65</width>
+      <height>30</height>
+     </rect>
     </property>
    </widget>
   </widget>

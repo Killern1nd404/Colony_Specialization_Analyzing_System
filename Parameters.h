@@ -20,6 +20,20 @@ struct FoodResource : public Resource {
     double nutritional_value;
 
     FoodResource(string name, double value, double nutritional_value) : Resource(name, value), nutritional_value(nutritional_value) {};
+    FoodResource() : Resource("NONE", 0), nutritional_value(0) {};
+};
+
+struct ImportResource : public Resource {
+    double price;
+
+    ImportResource(string name, double value, double price) : Resource(name, value), price(price) {};
+};
+
+struct ImportFoodResource : public ImportResource {
+    double nutritional_value;
+
+    ImportFoodResource(string name, double value, double price, double nutritional_value) : ImportResource(name, value, price), nutritional_value(nutritional_value) {};
+    ImportFoodResource() : ImportResource("NONE", 0, 0), nutritional_value(0) {};
 };
 
 // Структура дополнительного биома
@@ -118,6 +132,7 @@ struct Parameters {
     };
     // Минимальное площадь биома для организации колонии
     double min_required_square = 5;
+    double required_nutritional_per_person = 1;
 
     //Parameters() {};
 };
