@@ -8,18 +8,6 @@
 using namespace std;
 
 class AnalyzingData {
-    /*vector<string> make_production_resources_names;
-    vector<double> make_production_resources_values;
-    vector<string> make_food_resources_names;
-    vector<double> make_food_resources_values;
-    vector<string> import_production_resources_names;
-    vector<double> import_production_resources_values;
-    vector<string> import_food_resources_names;
-    vector<double> import_food_resources_values;
-    vector<string> main_biomes_names;
-    vector<double> main_biomes_squares;
-    vector<string> additional_biomes_names;*/
-
     vector<Resource> make_production_resources;
     vector<FoodResource> make_food_resources;
     vector<ImportResource> import_production_resources;
@@ -27,16 +15,11 @@ class AnalyzingData {
     vector<Biome> main_biomes;
     vector<AdditionalBiome> additional_biomes;
     Parameters parameters;
-    OptimalBiome optimal_biome;
     int human_number;
     double money;
 
-    /*void filterMakeProductionResources();
-    void filterMakeFoodResources();
-    void filterImportProductionResources();
-    void filterImportFoodResources();
-    void filterMainBiomes();*/
-
+    OptimalBiome optimal_biome;
+    double money_expenses;
 
 public:
     AnalyzingData();

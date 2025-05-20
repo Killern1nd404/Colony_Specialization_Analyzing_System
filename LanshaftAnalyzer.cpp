@@ -4,7 +4,19 @@
 #include "Parameters.h"
 #include <iostream>
 
-using namespace std;
+void LanshaftAnalyzer::writeDataInPlan() {
+    plan->setOptimalBiome(optimal_biome);
+    plan->addMakingResourceValue("STONE", making_resources_capacity["STONE"]);
+    plan->addMakingResourceValue("WOOD", making_resources_capacity["WOOD"]);
+    plan->addMakingResourceValue("CLAY", making_resources_capacity["CLAY"]);
+    plan->addMakingResourceValue("COAL", making_resources_capacity["COAL"]);
+    plan->addMakingResourceValue("IRON", making_resources_capacity["IRON"]);
+    plan->addImportingResourceValue("STONE", importing_resources_price["STONE"]);
+    plan->addImportingResourceValue("WOOD", importing_resources_price["WOOD"]);
+    plan->addImportingResourceValue("CLAY", importing_resources_price["CLAY"]);
+    plan->addImportingResourceValue("COAL", importing_resources_price["COAL"]);
+    plan->addImportingResourceValue("IRON", importing_resources_price["IRON"]);
+}
 
 double LanshaftAnalyzer::calculateResourceRequirements(string resource, double *price, double requirement) {
     for (Resource &making_resource : data->getMakingProductionResources()) {
@@ -18,11 +30,13 @@ double LanshaftAnalyzer::calculateResourceRequirements(string resource, double *
                         }
                         *price += resource_price;
                         left_money -= resource_price;
+                        importing_resources_price_temp[resource] = resource_price;
                         break;
                     }
                 }
             }
 
+            making_resources_capacity_temp[resource] = requirement / making_resource.max_value;
             return requirement / making_resource.max_value;
         }
     }
@@ -48,8 +62,6 @@ void LanshaftAnalyzer::operator()() {
     }
     double min_square = data->getMinRequiredSquare();
     double max_coefficient = 0;
-    OptimalBiome optimal_biome;
-
 
     for (Biome &biome : biomes) {
         if (biome.square >= min_square) {
@@ -66,18 +78,16 @@ void LanshaftAnalyzer::operator()() {
                 } catch (NotEnoughtResources error) {
                     is_enought_resources = false;
                 }
-                /*double min_required_operation_capacity = requirements.stone/making_resources["STONE"] +
-                                                         requirements.clay/making_resources["CLAY"] +
-                                                         requirements.coal/making_resources["COAL"] +
-                                                         requirements.iron/making_resources["IRON"] +
-                                                         requirements.wood/making_resources["WOOD"];*/
                 if (is_enought_resources) {
-                    cout << biome.name << ": " << (1 - min_required_operation_capacity) * biome.square << price << endl;
                     double potential = (1 - min_required_operation_capacity) * biome.square;
                     if (potential > max_coefficient) {
                         max_coefficient = potential;
                         optimal_biome.setBiome(biome.name, biome.square, requirements.stone, requirements.wood,
-                                               requirements.clay, requirements.iron, requirements.coal, price);
+                                               requirements.clay, requirements.iron, requirements.coal);
+                        making_resources_capacity = making_resources_capacity_temp;
+                        making_resources_capacity_temp.clear();
+                        importing_resources_price = importing_resources_price_temp;
+                        importing_resources_price_temp.clear();
                     }
                 }
 
@@ -88,7 +98,8 @@ void LanshaftAnalyzer::operator()() {
     if (optimal_biome.name == "NONE") {
         throw SuitableBiomeNotFounded();
     } else {
-        data->setOptimalBiome(optimal_biome);
+        //data->setOptimalBiome(optimal_biome);
+        writeDataInPlan();
     }
 
 

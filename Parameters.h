@@ -70,14 +70,13 @@ struct ResourcesRequirements {
 
 // Структура опитмального биома с его типом, площадью и необходимыми ресурсами
 struct OptimalBiome : public Biome, public ResourcesRequirements {
-    double price;
     //string biome;
     //string square;
 
-    OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0), price(0) {};
-    OptimalBiome(ResourcesRequirements data, string biome, double square, double price) : Biome(biome, square),
-        ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal), price(price) {};
-    void setBiome(string name, double square, double stone, double wood, double clay, double iron, double coal, double price) {
+    OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0) {};
+    OptimalBiome(ResourcesRequirements data, string biome, double square) : Biome(biome, square),
+        ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal) {};
+    void setBiome(string name, double square, double stone, double wood, double clay, double iron, double coal) {
         this->name = name;
         this->square = square;
         this->stone = stone;
@@ -85,7 +84,6 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
         this->clay = clay;
         this->iron = iron;
         this->coal = coal;
-        this->price = price;
     };
     void operator=(OptimalBiome &other) {
         this->name = other.name;
@@ -95,7 +93,6 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
         this->clay = other.clay;
         this->iron = other.iron;
         this->coal = other.coal;
-        this->price = other.price;
     }
     /*void setBiome(OptimalBiome biome) {
         this->name = biome.name;
@@ -110,6 +107,7 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
 
 // Структура основных параметров
 struct Parameters {
+    vector<string> resources_types = {"STONE", "WOOD", "CLAY", "IRON", "COAL", "FRUIT", "FISH", "SEED", "MEAT"};
     // Возможные требования для развития инфраструктуры в биомах
     map<string, vector<ResourcesRequirements>> biomes_requirements = {
         {"PLAIN", {{10, 3, 2, 1, 0}, {8, 2, 2, 3, 0}, {2, 4, 8, 2, 0}}},

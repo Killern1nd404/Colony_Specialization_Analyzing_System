@@ -4,6 +4,7 @@
 #include "AnalyzingData.h"
 #include "Parameters.h"
 #include <string>
+#include "FinalPlan.h"
 
 using namespace std;
 
@@ -24,18 +25,20 @@ public:
 
 class LanshaftAnalyzer {
     AnalyzingData *data;
+    FinalPlan *plan;
     double left_money;
+    map<string, double> making_resources_capacity;
+    map<string, double> importing_resources_price;
+    map<string, double> making_resources_capacity_temp;
+    map<string, double> importing_resources_price_temp;
+    OptimalBiome optimal_biome;
 
     OptimalBiome calculateCoefficients();
     double calculateResourceRequirements(string resource, double *price, double requirement);
-    double calculateStoneRequirements(double *price, double requirement);
-    double calculateWoodRequirements(double *price, double requirement);
-    double calculateClayRequirements(double *price, double requirement);
-    double calculateIronRequirements(double *price, double requirement);
-    double calculateCoalRequirements(double *price, double requirement);
+    void writeDataInPlan();
 
 public:
-    LanshaftAnalyzer(AnalyzingData *data, double money) : data(data), left_money(money) {};
+    LanshaftAnalyzer(AnalyzingData *data, FinalPlan *plan, double money) : data(data), plan(plan), left_money(money) {};
     void operator()();
 };
 

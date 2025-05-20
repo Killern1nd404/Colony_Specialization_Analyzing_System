@@ -2,6 +2,15 @@
 #include "Parameters.h"
 #include <string>
 
+void FoodRequirementsAnalyzer::writeDataInPlan() {
+    if (max_potential > 0) {
+        plan->addMakingResourceValue(food, max_potential);
+    }
+    if (total_price > 0) {
+        plan->addImportingResourceValue(food, total_price);
+    }
+}
+
 void FoodRequirementsAnalyzer::operator()() {
     double general_required_nutritional = data->getHumanNumber() * data->getRequiredNutritionalPerPerson() / 1000;
     for (FoodResource &making_food : data->getMakingFoodResources()) {
@@ -38,4 +47,5 @@ void FoodRequirementsAnalyzer::operator()() {
     if (food == "NONE") {
         throw CanNotCalculateFoodRequirements();
     }
+    writeDataInPlan();
 }

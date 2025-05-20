@@ -111,12 +111,11 @@ void AnalyzingSystem::startAnalysis() {
     setAnalyzingData();
 
     try {
-        FoodRequirementsAnalyzer food_analyzer(&data);
+        FoodRequirementsAnalyzer food_analyzer(&data, &final_plan);
         food_analyzer();
-        LanshaftAnalyzer lanshaft_analyzer(&data, data.getMoney() - food_analyzer.getTotalPrice());
+        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan, data.getMoney() - food_analyzer.getTotalPrice());
         lanshaft_analyzer();
-        OptimalBiome biome = data.getOptimalBiome();
-        cout << biome.name << endl;
+        final_plan.print();
     } catch (SuitableBiomeNotFounded error) {
         cout << "Not nice biome Bebra" << endl;
     } catch (CanNotCalculateFoodRequirements error) {

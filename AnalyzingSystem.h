@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "AnalyzingData.h"
+#include "FinalPlan.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -12,14 +13,13 @@ QT_END_NAMESPACE
 
 class AnalyzingSystem : public QMainWindow {
     Q_OBJECT
+    Ui::AnalyzingSystem *ui;
     AnalyzingData data;
+    FinalPlan final_plan;
 
 public:
     AnalyzingSystem(QWidget *parent = nullptr);
     ~AnalyzingSystem();
-
-private:
-    Ui::AnalyzingSystem *ui;
 
 private slots:
     void setAnalyzingData();
