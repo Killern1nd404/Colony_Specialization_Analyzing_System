@@ -70,13 +70,14 @@ struct ResourcesRequirements {
 
 // Структура опитмального биома с его типом, площадью и необходимыми ресурсами
 struct OptimalBiome : public Biome, public ResourcesRequirements {
+    double price;
     //string biome;
     //string square;
 
-    OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0) {};
-    OptimalBiome(ResourcesRequirements data, string biome, double square) : Biome(biome, square),
-        ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal) {};
-    void setBiome(string name, double square, double stone, double wood, double clay, double iron, double coal) {
+    OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0), price(0) {};
+    OptimalBiome(ResourcesRequirements data, string biome, double square, double price) : Biome(biome, square),
+        ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal), price(price) {};
+    void setBiome(string name, double square, double stone, double wood, double clay, double iron, double coal, double price) {
         this->name = name;
         this->square = square;
         this->stone = stone;
@@ -84,6 +85,7 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
         this->clay = clay;
         this->iron = iron;
         this->coal = coal;
+        this->price = price;
     };
     void operator=(OptimalBiome &other) {
         this->name = other.name;
@@ -93,6 +95,7 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
         this->clay = other.clay;
         this->iron = other.iron;
         this->coal = other.coal;
+        this->price = other.price;
     }
     /*void setBiome(OptimalBiome biome) {
         this->name = biome.name;
@@ -128,7 +131,10 @@ struct Parameters {
         {"Болото", "SWAMP"},
         {"Горы", "MOUNTAINS"},
         {"Холмы", "HILLS"},
-        {"Лес", "FOREST"}
+        {"Лес", "FOREST"},
+        {"Море/Океан", "Sea"},
+        {"Река", "River"},
+        {"Озеро", "Lake"}
     };
     // Минимальное площадь биома для организации колонии
     double min_required_square = 5;

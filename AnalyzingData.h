@@ -57,6 +57,7 @@ public:
     //vector<string> getMainBiomesNames() {return main_biomes_names;};
     //vector<double> getMainBiomesSquares() {return main_biomes_squares;};
     vector<Biome> getMainBiomes() {return main_biomes;};
+    vector<AdditionalBiome> getAdditionalBiomes() {return additional_biomes;};
     vector<Resource> getMakingProductionResources() {return make_production_resources;};
     vector<FoodResource> getMakingFoodResources() {return make_food_resources;};
     vector<ImportResource> getImportingProductionResources() {return import_production_resources;};
