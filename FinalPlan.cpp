@@ -2,6 +2,7 @@
 #include "Parameters.h"
 #include <string>
 #include <iostream>
+#include "FinalPlanWindow.h"
 
 using namespace std;
 
@@ -21,10 +22,4 @@ void FinalPlan::addMakingResourceValue(string resource, double value) {
 void FinalPlan::addImportingResourceValue(string resource, double value) {
     importing_resources[resource] += value;
     total_price += value;
-}
-
-void FinalPlan::print() {
-    cout << optimal_biome.name << endl;
-    cout << total_price << endl;
-    cout << total_operation_capacity << endl;
 }

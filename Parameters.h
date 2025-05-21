@@ -130,9 +130,20 @@ struct Parameters {
         {"Горы", "MOUNTAINS"},
         {"Холмы", "HILLS"},
         {"Лес", "FOREST"},
-        {"Море/Океан", "Sea"},
-        {"Река", "River"},
-        {"Озеро", "Lake"}
+        {"Море/Океан", "SEA"},
+        {"Река", "RIVER"},
+        {"Озеро", "LAKE"}
+    };
+    // Приведение названий биомов
+    map<string, string> biomes_brinding_to_rus = {
+        {"PLAIN", "Равнина"},
+        {"SWAMP", "Болото"},
+        {"MOUNTAINS", "Горы"},
+        {"HILLS", "Холмы"},
+        {"FOREST", "Лес"},
+        {"SEA", "Море/Океан"},
+        {"RIVER", "Река"},
+        {"LAKE", "Озеро"}
     };
     // Минимальное площадь биома для организации колонии
     double min_required_square = 5;

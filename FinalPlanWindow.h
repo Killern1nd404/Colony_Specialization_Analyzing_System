@@ -13,9 +13,14 @@ class FinalPlanWindow : public QDialog {
     Ui::FinalPlanWindow *ui;
     FinalPlan *final_plan;
 
+    void fillInfrastructureData();
+    void fillMakingData();
+    void fillImportingData();
+
 public:
     explicit FinalPlanWindow(QWidget *parent = nullptr);
     void setFinalPlan(FinalPlan *plan) {final_plan = plan;};
+    void updateData();
     ~FinalPlanWindow();
 };
 

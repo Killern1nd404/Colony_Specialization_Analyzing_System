@@ -18,8 +18,10 @@ public:
     void addMakingResourceValue(string resource, double value);
     void addImportingResourceValue(string resource, double value);
     void setOptimalBiome(OptimalBiome biome) {optimal_biome = biome;};
-    void print();
-
+    OptimalBiome getOptimalBiome() {return optimal_biome;};
+    map<string, double> getMakingResources() {return making_resources;};
+    map<string, double> getImportingResources() {return importing_resources;};
+    double getTotalPrice() {return total_price;};
 };
 
 #endif // FINALPLAN_H
