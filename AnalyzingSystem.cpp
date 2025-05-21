@@ -6,6 +6,7 @@
 #include <map>
 #include "Parameters.h"
 #include "FoodRequirementsAnalyzer.h"
+#include "FinalPlanWindow.h"
 
 using namespace std;
 
@@ -116,6 +117,10 @@ void AnalyzingSystem::startAnalysis() {
         LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan, data.getMoney() - food_analyzer.getTotalPrice());
         lanshaft_analyzer();
         final_plan.print();
+        FinalPlanWindow plan_window;
+        plan_window.setFinalPlan(&final_plan);
+        plan_window.setModal(true);
+        plan_window.exec();
     } catch (SuitableBiomeNotFounded error) {
         cout << "Not nice biome Bebra" << endl;
     } catch (CanNotCalculateFoodRequirements error) {
