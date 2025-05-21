@@ -4,7 +4,6 @@
 #include "LanshaftAnalyzer.h"
 #include <iostream>
 #include <map>
-#include "Parameters.h"
 #include "FoodRequirementsAnalyzer.h"
 #include "FinalPlanWindow.h"
 
@@ -37,33 +36,11 @@ void AnalyzingSystem::addAdditionalBiome() {
 void AnalyzingSystem::setAnalyzingData() {
     data.clearData();
 
-    /*data.addMakingProductionResource("STONE", ui->make_stone_input->value());
+    data.addMakingProductionResource("STONE", ui->make_stone_input->value());
     data.addMakingProductionResource("WOOD", ui->make_wood_input->value());
     data.addMakingProductionResource("CLAY", ui->make_clay_input->value());
     data.addMakingProductionResource("IRON", ui->make_iron_input->value());
     data.addMakingProductionResource("COAL", ui->make_coal_input->value());
-
-    data.addMakingFoodResource("FRUIT", ui->make_fruit_input->value());
-    data.addMakingFoodResource("FISH", ui->make_fish_input->value());
-    data.addMakingFoodResource("SEED", ui->make_seed_input->value());
-    data.addMakingFoodResource("MEAT", ui->make_meat_input->value());
-
-    data.addImportingProductionResource("STONE", ui->import_stone_input->value());
-    data.addImportingProductionResource("WOOD", ui->import_wood_input->value());
-    data.addImportingProductionResource("CLAY", ui->import_clay_input->value());
-    data.addImportingProductionResource("IRON", ui->import_iron_input->value());
-    data.addImportingProductionResource("COAL", ui->import_coal_input->value());
-
-    data.addImportingFoodResource("FRUIT", ui->import_fruit_input->value());
-    data.addImportingFoodResource("FISH", ui->import_fish_input->value());
-    data.addImportingFoodResource("SEED", ui->import_seed_input->value());
-    data.addImportingFoodResource("MEAT", ui->import_meat_input->value());*/
-
-    data.addMakingProductionResource("STONE", 205);
-    data.addMakingProductionResource("WOOD", 316);
-    data.addMakingProductionResource("CLAY", 124);
-    data.addMakingProductionResource("IRON", 112);
-    data.addMakingProductionResource("COAL", 106);
 
     data.addMakingFoodResource("FRUIT", ui->make_fruit_input->value());
     data.addMakingFoodResource("FISH", ui->make_fish_input->value());
@@ -81,29 +58,18 @@ void AnalyzingSystem::setAnalyzingData() {
     data.addImportingFoodResource("SEED", ui->import_seed_input->value(), ui->import_price_seed_input->value());
     data.addImportingFoodResource("MEAT", ui->import_meat_input->value(), ui->import_price_meat_input->value());
 
-    /*for (int i = 0; i < ui->biomes_table->rowCount(); i++) {
+    for (int i = 0; i < ui->biomes_table->rowCount(); i++) {
         string square = ui->biomes_table->item(i, 1)->text().toStdString();
         square = square.replace(square.find(','), 1, ".");
-        data.addMainBiome(ui->biomes_table->item(i, 0)->text().toStdString(), stod(square));
+        data.addMainBiome(data.getBiomesBrinding()[ui->biomes_table->item(i, 0)->text().toStdString()], stod(square));
     }
 
     for (int i = 0; i < ui->additional_biomes_table->rowCount(); i++) {
         data.addAdditionalBiome(ui->additional_biomes_table->item(i, 0)->text().toStdString());
-    }*/
+    }
 
     map<string, string> biomes_brinding = data.getBiomesBrinding();
 
-    data.addMainBiome(biomes_brinding["Равнина"], 12.3);
-    data.addMainBiome(biomes_brinding["Горы"], 4.3);
-    data.addMainBiome(biomes_brinding["Лес"], 15.3);
-
-    for (int i = 0; i < ui->additional_biomes_table->rowCount(); i++) {
-        data.addAdditionalBiome(ui->additional_biomes_table->item(i, 0)->text().toStdString());
-    }
-
-    //data.filterData();
-
-    //data.checkData();
     data.setHumanNumber(ui->human_number_input->value());
     data.setMoney(ui->money_number_input->value());
 }
@@ -114,7 +80,7 @@ void AnalyzingSystem::startAnalysis() {
     try {
         FoodRequirementsAnalyzer food_analyzer(&data, &final_plan);
         food_analyzer();
-        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan, data.getMoney() - food_analyzer.getTotalPrice());
+        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
         lanshaft_analyzer();
         FinalPlanWindow plan_window;
         plan_window.setFinalPlan(&final_plan);
@@ -122,10 +88,10 @@ void AnalyzingSystem::startAnalysis() {
         plan_window.updateData();
         plan_window.exec();
     } catch (SuitableBiomeNotFounded error) {
-        cout << "Not nice biome Bebra" << endl;
+        ui->error_label->setText(QString::fromStdString("Не удалось найти подходящий биом"));
     } catch (CanNotCalculateFoodRequirements error) {
-        cout << "Not food Bebra" << endl;
+        ui->error_label->setText(QString::fromStdString("Не хватает доступной пищи"));
     } catch (DrinkWaterSourceNotFounded error) {
-        cout << "Not water Bebra" << endl;
+        ui->error_label->setText(QString::fromStdString("Не найдено источников питьевой воды"));
     }
 }

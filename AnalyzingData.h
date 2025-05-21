@@ -35,17 +35,12 @@ public:
     void setHumanNumber(int n) {human_number=n;};
     void setMoney(int n) {money=n;};
 
-    //void filterData();
-    //void filterMainBiomes();
-    //vector<string> getMainBiomesNames() {return main_biomes_names;};
-    //vector<double> getMainBiomesSquares() {return main_biomes_squares;};
     vector<Biome> getMainBiomes() {return main_biomes;};
     vector<AdditionalBiome> getAdditionalBiomes() {return additional_biomes;};
     vector<Resource> getMakingProductionResources() {return make_production_resources;};
     vector<FoodResource> getMakingFoodResources() {return make_food_resources;};
     vector<ImportResource> getImportingProductionResources() {return import_production_resources;};
     vector<ImportFoodResource> getImportingFoodResources() {return import_food_resources;};
-    //map<string, double> getFoodNutritionalValue() {return parameters.food_resources_nutritional_value;};
     map<string, vector<ResourcesRequirements>> getBiomesRequiremets() {return parameters.biomes_requirements;};
     map<string, string> getBiomesBrinding() {return parameters.biomes_brinding;};
     double getMinRequiredSquare() {return parameters.min_required_square;};
@@ -53,8 +48,6 @@ public:
     int getHumanNumber() {return human_number;};
     double getMoney() {return money;};
     double getRequiredNutritionalPerPerson() {return parameters.required_nutritional_per_person;};
-
-    //void checkData();
 };
 
 #endif // ANALYZINGDATA_H

@@ -22,6 +22,7 @@ public:
     map<string, double> getMakingResources() {return making_resources;};
     map<string, double> getImportingResources() {return importing_resources;};
     double getTotalPrice() {return total_price;};
+    double getTotalOperatingCapacity() {return total_operation_capacity;};
 };
 
 #endif // FINALPLAN_H

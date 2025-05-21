@@ -23,12 +23,14 @@ struct FoodResource : public Resource {
     FoodResource() : Resource("NONE", 0), nutritional_value(0) {};
 };
 
+// Структура импортного ресурса
 struct ImportResource : public Resource {
     double price;
 
     ImportResource(string name, double value, double price) : Resource(name, value), price(price) {};
 };
 
+// Структура импортного пищевого ресурса
 struct ImportFoodResource : public ImportResource {
     double nutritional_value;
 
@@ -61,18 +63,10 @@ struct ResourcesRequirements {
 
     ResourcesRequirements(double stone, double wood, double clay, double iron, double coal) : stone(stone), wood(wood), clay(clay),
         coal(coal), iron(iron) {};
-    /*double getStone() {return stone;};
-    double getWood() {return wood;};
-    double getClay() {return clay;};
-    double getCoal() {return coal;};
-    double getIron() {return iron;};*/
 };
 
 // Структура опитмального биома с его типом, площадью и необходимыми ресурсами
 struct OptimalBiome : public Biome, public ResourcesRequirements {
-    //string biome;
-    //string square;
-
     OptimalBiome() : Biome("NONE", 0), ResourcesRequirements(0, 0, 0, 0, 0) {};
     OptimalBiome(ResourcesRequirements data, string biome, double square) : Biome(biome, square),
         ResourcesRequirements(data.stone, data.wood, data.clay, data.iron, data.coal) {};
@@ -94,15 +88,6 @@ struct OptimalBiome : public Biome, public ResourcesRequirements {
         this->iron = other.iron;
         this->coal = other.coal;
     }
-    /*void setBiome(OptimalBiome biome) {
-        this->name = biome.name;
-        this->square = biome.square;
-        this->stone = biome.stone;
-        this->wood = biome.wood;
-        this->clay = biome.clay;
-        this->iron = biome.iron;
-        this->coal = biome.coal;
-    };*/
 };
 
 // Структура основных параметров
@@ -147,18 +132,8 @@ struct Parameters {
     };
     // Минимальное площадь биома для организации колонии
     double min_required_square = 5;
+    // Необходимое количество питательных веществ на одного человека
     double required_nutritional_per_person = 1;
-
-    //Parameters() {};
 };
-
-/*map<string, double> food_resources_nutritional_value = {
-    {"FRUIT", 0.75},
-    {"SEED", 1.2},
-    {"FISH", 1.5},
-    {"MEAT", 1.5}
-};*/
-
-//#define Parameters PARAMETERS;
 
 #endif // PARAMETERS_H

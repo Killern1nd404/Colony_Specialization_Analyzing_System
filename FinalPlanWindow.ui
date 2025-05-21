@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Оптимальный план развития</string>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
@@ -670,7 +670,7 @@
      <rect>
       <x>115</x>
       <y>160</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -683,7 +683,7 @@
      <rect>
       <x>115</x>
       <y>180</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -696,7 +696,7 @@
      <rect>
       <x>115</x>
       <y>200</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -709,7 +709,7 @@
      <rect>
       <x>115</x>
       <y>220</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -722,7 +722,7 @@
      <rect>
       <x>115</x>
       <y>140</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -735,7 +735,7 @@
      <rect>
       <x>115</x>
       <y>120</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -748,7 +748,7 @@
      <rect>
       <x>115</x>
       <y>100</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -761,7 +761,7 @@
      <rect>
       <x>115</x>
       <y>80</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -774,7 +774,7 @@
      <rect>
       <x>115</x>
       <y>60</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>
@@ -800,7 +800,7 @@
      <rect>
       <x>115</x>
       <y>240</y>
-      <width>70</width>
+      <width>80</width>
       <height>20</height>
      </rect>
     </property>

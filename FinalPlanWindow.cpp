@@ -33,15 +33,15 @@ void FinalPlanWindow::fillInfrastructureData() {
 void FinalPlanWindow::fillMakingData() {
     map<string, double> making_resources_data = final_plan->getMakingResources();
 
-    ui->stone_make->setText(QString::fromStdString(std::to_string(making_resources_data["STONE"])+" %"));
-    ui->wood_make->setText(QString::fromStdString(std::to_string(making_resources_data["WOOD"])+" %"));
-    ui->clay_make->setText(QString::fromStdString(std::to_string(making_resources_data["CLAY"])+" %"));
-    ui->iron_make->setText(QString::fromStdString(std::to_string(making_resources_data["IRON"])+" %"));
-    ui->coal_make->setText(QString::fromStdString(std::to_string(making_resources_data["COAL"])+" %"));
-    ui->fruit_make->setText(QString::fromStdString(std::to_string(making_resources_data["FRUIT"])+" %"));
-    ui->fish_make->setText(QString::fromStdString(std::to_string(making_resources_data["FISH"])+" %"));
-    ui->seed_make->setText(QString::fromStdString(std::to_string(making_resources_data["SEED"])+" %"));
-    ui->meat_make->setText(QString::fromStdString(std::to_string(making_resources_data["MEAT"])+" %"));
+    ui->stone_make->setText(QString::fromStdString(std::to_string(making_resources_data["STONE"]*100)+" %"));
+    ui->wood_make->setText(QString::fromStdString(std::to_string(making_resources_data["WOOD"]*100)+" %"));
+    ui->clay_make->setText(QString::fromStdString(std::to_string(making_resources_data["CLAY"]*100)+" %"));
+    ui->iron_make->setText(QString::fromStdString(std::to_string(making_resources_data["IRON"]*100)+" %"));
+    ui->coal_make->setText(QString::fromStdString(std::to_string(making_resources_data["COAL"]*100)+" %"));
+    ui->fruit_make->setText(QString::fromStdString(std::to_string(making_resources_data["FRUIT"]*100)+" %"));
+    ui->fish_make->setText(QString::fromStdString(std::to_string(making_resources_data["FISH"]*100)+" %"));
+    ui->seed_make->setText(QString::fromStdString(std::to_string(making_resources_data["SEED"]*100)+" %"));
+    ui->meat_make->setText(QString::fromStdString(std::to_string(making_resources_data["MEAT"]*100)+" %"));
 }
 
 void FinalPlanWindow::fillImportingData() {
@@ -63,25 +63,4 @@ void FinalPlanWindow::updateData() {
     fillInfrastructureData();
     fillMakingData();
     fillImportingData();
-    //OptimalBiome biome = final_plan->getOptimalBiome();
-    //map<string, double> making_resources_data = final_plan->getMakingResources();
-    //map<string, double> importing_resources_data = final_plan->getImportingResources();
-    /*Parameters parameters;
-    ui->biome->setText(QString::fromStdString(parameters.biomes_brinding_to_rus[biome.name]));
-    ui->square->setText(QString::fromStdString(std::to_string(biome.square)));
-    ui->stone->setText(QString::fromStdString(std::to_string(biome.stone)));
-    ui->wood->setText(QString::fromStdString(std::to_string(biome.wood)));
-    ui->clay->setText(QString::fromStdString(std::to_string(biome.clay)));
-    ui->iron->setText(QString::fromStdString(std::to_string(biome.iron)));
-    ui->coal->setText(QString::fromStdString(std::to_string(biome.coal)));*/
-
-    /*ui->stone_make->setText(QString::fromStdString(std::to_string(making_resources_data["STONE"])+" %"));
-    ui->wood_make->setText(QString::fromStdString(std::to_string(making_resources_data["WOOD"])+" %"));
-    ui->clay_make->setText(QString::fromStdString(std::to_string(making_resources_data["CLAY"])+" %"));
-    ui->iron_make->setText(QString::fromStdString(std::to_string(making_resources_data["IRON"])+" %"));
-    ui->coal_make->setText(QString::fromStdString(std::to_string(making_resources_data["COAL"])+" %"));
-    ui->fruit_make->setText(QString::fromStdString(std::to_string(making_resources_data["FRUIT"])+" %"));
-    ui->fish_make->setText(QString::fromStdString(std::to_string(making_resources_data["FISH"])+" %"));
-    ui->seed_make->setText(QString::fromStdString(std::to_string(making_resources_data["SEED"])+" %"));
-    ui->meat_make->setText(QString::fromStdString(std::to_string(making_resources_data["MEAT"])+" %"));*/
 }

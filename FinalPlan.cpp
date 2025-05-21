@@ -1,8 +1,6 @@
 #include "FinalPlan.h"
 #include "Parameters.h"
 #include <string>
-#include <iostream>
-#include "FinalPlanWindow.h"
 
 using namespace std;
 
