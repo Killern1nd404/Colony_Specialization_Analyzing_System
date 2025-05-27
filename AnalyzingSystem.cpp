@@ -78,12 +78,12 @@ void AnalyzingSystem::startAnalysis() {
     setAnalyzingData();
 
     try {
-        FoodRequirementsAnalyzer food_analyzer(&data, &final_plan);
+        FoodRequirementsAnalyzer food_analyzer(&data, &final_plan_builder);
         food_analyzer();
-        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
+        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan_builder, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
         lanshaft_analyzer();
         FinalPlanWindow plan_window;
-        plan_window.setFinalPlan(&final_plan);
+        plan_window.setFinalPlan(final_plan_builder.returnPlan());
         plan_window.setModal(true);
         plan_window.updateData();
         plan_window.exec();

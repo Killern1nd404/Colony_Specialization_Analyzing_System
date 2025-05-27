@@ -12,7 +12,7 @@ public:
 
 class FoodRequirementsAnalyzer {
     AnalyzingData *data;
-    FinalPlan *plan;
+    FinalPlanBuilder *plan_builder;
     double max_potential = -1;
     string food = "NONE";
     double total_price = 0;
@@ -20,7 +20,7 @@ class FoodRequirementsAnalyzer {
     void writeDataInPlan();
 
 public:
-    FoodRequirementsAnalyzer(AnalyzingData *data, FinalPlan *plan) : data(data), plan(plan) {};
+    FoodRequirementsAnalyzer(AnalyzingData *data, FinalPlanBuilder *plan_builder) : data(data), plan_builder(plan_builder) {};
     void operator()();
     double getOperationCapacity() {return max_potential;};
     string getFoodName() {return food;};

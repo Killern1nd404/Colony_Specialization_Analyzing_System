@@ -15,7 +15,8 @@ class AnalyzingSystem : public QMainWindow {
     Q_OBJECT
     Ui::AnalyzingSystem *ui;
     AnalyzingData data;
-    FinalPlan final_plan;
+    //FinalPlan final_plan;
+    FinalPlanBuilder final_plan_builder;
 
 public:
     AnalyzingSystem(QWidget *parent = nullptr);

@@ -18,7 +18,7 @@ FinalPlanWindow::~FinalPlanWindow()
 }
 
 void FinalPlanWindow::fillInfrastructureData() {
-    OptimalBiome biome = final_plan->getOptimalBiome();
+    OptimalBiome biome = final_plan.getOptimalBiome();
     Parameters parameters;
 
     ui->biome->setText(QString::fromStdString(parameters.biomes_brinding_to_rus[biome.name]));
@@ -31,7 +31,7 @@ void FinalPlanWindow::fillInfrastructureData() {
 }
 
 void FinalPlanWindow::fillMakingData() {
-    map<string, double> making_resources_data = final_plan->getMakingResources();
+    map<string, double> making_resources_data = final_plan.getMakingResources();
 
     ui->stone_make->setText(QString::fromStdString(std::to_string(making_resources_data["STONE"]*100)+" %"));
     ui->wood_make->setText(QString::fromStdString(std::to_string(making_resources_data["WOOD"]*100)+" %"));
@@ -45,7 +45,7 @@ void FinalPlanWindow::fillMakingData() {
 }
 
 void FinalPlanWindow::fillImportingData() {
-    map<string, double> importing_resources_data = final_plan->getImportingResources();
+    map<string, double> importing_resources_data = final_plan.getImportingResources();
 
     ui->stone_import->setText(QString::fromStdString(std::to_string(importing_resources_data["STONE"])+" руб."));
     ui->wood_import->setText(QString::fromStdString(std::to_string(importing_resources_data["WOOD"])+" руб."));
@@ -56,7 +56,7 @@ void FinalPlanWindow::fillImportingData() {
     ui->fish_import->setText(QString::fromStdString(std::to_string(importing_resources_data["FISH"])+" руб."));
     ui->seed_import->setText(QString::fromStdString(std::to_string(importing_resources_data["SEED"])+" руб."));
     ui->meat_import->setText(QString::fromStdString(std::to_string(importing_resources_data["MEAT"])+" руб."));
-    ui->total_price->setText(QString::fromStdString(std::to_string(final_plan->getTotalPrice())+" руб."));
+    ui->total_price->setText(QString::fromStdString(std::to_string(final_plan.getTotalPrice())+" руб."));
 }
 
 void FinalPlanWindow::updateData() {

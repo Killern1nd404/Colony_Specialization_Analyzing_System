@@ -7,17 +7,18 @@
 using namespace std;
 
 void LanshaftAnalyzer::writeDataInPlan() {
-    plan->setOptimalBiome(optimal_biome);
-    plan->addMakingResourceValue("STONE", making_resources_capacity["STONE"]);
-    plan->addMakingResourceValue("WOOD", making_resources_capacity["WOOD"]);
-    plan->addMakingResourceValue("CLAY", making_resources_capacity["CLAY"]);
-    plan->addMakingResourceValue("COAL", making_resources_capacity["COAL"]);
-    plan->addMakingResourceValue("IRON", making_resources_capacity["IRON"]);
-    plan->addImportingResourceValue("STONE", importing_resources_price["STONE"]);
-    plan->addImportingResourceValue("WOOD", importing_resources_price["WOOD"]);
-    plan->addImportingResourceValue("CLAY", importing_resources_price["CLAY"]);
-    plan->addImportingResourceValue("COAL", importing_resources_price["COAL"]);
-    plan->addImportingResourceValue("IRON", importing_resources_price["IRON"]);
+    plan_builder->setOptimalBiome(optimal_biome);
+    plan_builder->addMakingResourceValue("STONE", making_resources_capacity["STONE"]);
+    plan_builder->addMakingResourceValue("WOOD", making_resources_capacity["WOOD"]);
+    plan_builder->addMakingResourceValue("CLAY", making_resources_capacity["CLAY"]);
+    plan_builder->addMakingResourceValue("COAL", making_resources_capacity["COAL"]);
+    plan_builder->addMakingResourceValue("IRON", making_resources_capacity["IRON"]);
+    plan_builder->addImportingResourceValue("STONE", importing_resources_price["STONE"]);
+    plan_builder->addImportingResourceValue("WOOD", importing_resources_price["WOOD"]);
+    plan_builder->addImportingResourceValue("CLAY", importing_resources_price["CLAY"]);
+    plan_builder->addImportingResourceValue("COAL", importing_resources_price["COAL"]);
+    plan_builder->addImportingResourceValue("IRON", importing_resources_price["IRON"]);
+    plan_builder->setTotalPrice(total_price);
 }
 
 bool LanshaftAnalyzer::isHaveDrinkWater() {
@@ -41,23 +42,21 @@ void LanshaftAnalyzer::calculateResourceRequirements(string resource, double *pr
             } else {
                 for (ImportResource &importing_resource : data->getImportingProductionResources()) {
                     if (importing_resource.name == resource) {
-                        if (making_resource.max_value*(left_operation_capacity-*capacity) + min(importing_resource.max_value, (left_money - *price)/importing_resource.price) >= requirement) {
-                            for (int i = 9; i >= 0; i--) {
-                                double capacity_temp = i*0.1;
-                                if (capacity_temp + *capacity <= left_operation_capacity) {
-                                    double price_temp = (requirement - making_resource.max_value*capacity_temp)/importing_resource.price;
-                                    if (price_temp > left_money - *price) {
-                                        throw NotEnoughtResources();
-                                    }
-                                    making_resources_capacity_temp[resource] = capacity_temp;
-                                    *capacity += capacity_temp;
-                                    *price += price_temp;
-                                    return;
+                        for (int i = 0; i < 10; i++) {
+                            double capacity_temp = i*0.1;
+                            if (capacity_temp + *capacity <= left_operation_capacity) {
+                                double price_temp = (requirement - making_resource.max_value*capacity_temp)/importing_resource.price;
+                                if (price_temp > left_money - *price) {
+                                    throw NotEnoughtResources();
                                 }
+                                making_resources_capacity_temp[resource] = capacity_temp;
+                                *capacity += capacity_temp;
+                                importing_resources_price_temp[resource] = price_temp;
+                                *price += price_temp;
+                                return;
                             }
-                        } else {
-                            throw NotEnoughtResources();
                         }
+                        throw NotEnoughtResources();
                     }
                 }
             }
@@ -96,6 +95,7 @@ void LanshaftAnalyzer::operator()() {
                     double potential = (1 - min_operation_capacity) * biome.square;
                     if (potential > total_operation_capacity && min_operation_capacity <= 1) {
                         total_operation_capacity = min_operation_capacity;
+                        total_price = price;
                         optimal_biome.setBiome(biome.name, biome.square, requirements.stone, requirements.wood,
                                                requirements.clay, requirements.iron, requirements.coal);
                         making_resources_capacity = making_resources_capacity_temp;

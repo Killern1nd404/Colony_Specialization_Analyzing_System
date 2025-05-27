@@ -11,7 +11,7 @@ class FinalPlanWindow;
 class FinalPlanWindow : public QDialog {
     Q_OBJECT
     Ui::FinalPlanWindow *ui;
-    FinalPlan *final_plan;
+    FinalPlan final_plan;
 
     void fillInfrastructureData();
     void fillMakingData();
@@ -19,7 +19,7 @@ class FinalPlanWindow : public QDialog {
 
 public:
     explicit FinalPlanWindow(QWidget *parent = nullptr);
-    void setFinalPlan(FinalPlan *plan) {final_plan = plan;};
+    void setFinalPlan(FinalPlan plan) {final_plan = plan;};
     void updateData();
     ~FinalPlanWindow();
 };

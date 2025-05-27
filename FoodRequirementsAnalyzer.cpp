@@ -4,10 +4,10 @@
 
 void FoodRequirementsAnalyzer::writeDataInPlan() {
     if (max_potential > 0) {
-        plan->addMakingResourceValue(food, max_potential);
+        plan_builder->addMakingResourceValue(food, max_potential);
     }
     if (total_price > 0) {
-        plan->addImportingResourceValue(food, total_price);
+        plan_builder->addImportingResourceValue(food, total_price);
     }
 }
 
