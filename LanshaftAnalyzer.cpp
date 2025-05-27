@@ -6,6 +6,13 @@
 
 using namespace std;
 
+void LanshaftAnalyzer::setAllData(AnalyzingData *data_, FinalPlanBuilder *plan_builder_, double money, double operation_capacity) {
+    data=data_;
+    plan_builder=plan_builder_;
+    left_money=money;
+    left_operation_capacity=operation_capacity;
+}
+
 void LanshaftAnalyzer::writeDataInPlan() {
     plan_builder->setOptimalBiome(optimal_biome);
     plan_builder->addMakingResourceValue("STONE", making_resources_capacity["STONE"]);

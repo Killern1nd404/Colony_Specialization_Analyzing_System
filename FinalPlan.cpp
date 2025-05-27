@@ -12,6 +12,13 @@ void FinalPlan::fillResources() {
     }
 }
 
+void FinalPlan::clearPlan() {
+    making_resources.clear();
+    importing_resources.clear();
+    total_price = 0;
+    total_operation_capacity = 0;
+}
+
 void FinalPlan::addMakingResourceValue(string resource, double value) {
     making_resources[resource] += value;
     total_operation_capacity += value;

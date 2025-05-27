@@ -1,3 +1,4 @@
+
 #ifndef LANSHAFTANALYZER_H
 #define LANSHAFTANALYZER_H
 
@@ -39,7 +40,9 @@ class LanshaftAnalyzer {
     bool isHaveDrinkWater();
 
 public:
-    LanshaftAnalyzer(AnalyzingData *data, FinalPlanBuilder *plan_builder, double money, double operation_capacity) : data(data), plan_builder(plan_builder), left_money(money), left_operation_capacity(operation_capacity) {};
+    //LanshaftAnalyzer(AnalyzingData *data, FinalPlanBuilder *plan_builder, double money, double operation_capacity) : data(data), plan_builder(plan_builder), left_money(money), left_operation_capacity(operation_capacity) {};
+    LanshaftAnalyzer() {};
+    void setAllData(AnalyzingData *data_, FinalPlanBuilder *plan_builder_, double money, double operation_capacity);
     void operator()();
 };
 

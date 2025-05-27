@@ -36,7 +36,7 @@ void AnalyzingSystem::addAdditionalBiome() {
 void AnalyzingSystem::setAnalyzingData() {
     data.clearData();
 
-    data.addMakingProductionResource("STONE", ui->make_stone_input->value());
+    /*data.addMakingProductionResource("STONE", ui->make_stone_input->value());
     data.addMakingProductionResource("WOOD", ui->make_wood_input->value());
     data.addMakingProductionResource("CLAY", ui->make_clay_input->value());
     data.addMakingProductionResource("IRON", ui->make_iron_input->value());
@@ -45,7 +45,21 @@ void AnalyzingSystem::setAnalyzingData() {
     data.addMakingFoodResource("FRUIT", ui->make_fruit_input->value());
     data.addMakingFoodResource("FISH", ui->make_fish_input->value());
     data.addMakingFoodResource("SEED", ui->make_seed_input->value());
-    data.addMakingFoodResource("MEAT", ui->make_meat_input->value());
+    data.addMakingFoodResource("MEAT", ui->make_meat_input->value());*/
+
+    data.addMakingProductionResource("STONE", 100);
+    data.addMakingProductionResource("WOOD", 100);
+    data.addMakingProductionResource("CLAY", 100);
+    data.addMakingProductionResource("IRON", 100);
+    data.addMakingProductionResource("COAL", 0);
+
+    data.addMakingFoodResource("FRUIT", 5);
+    data.addMakingFoodResource("FISH", 0);
+    data.addMakingFoodResource("SEED", 0);
+    data.addMakingFoodResource("MEAT", 0);
+
+
+
 
     data.addImportingProductionResource("STONE", ui->import_stone_input->value(), ui->import_price_stone_input->value());
     data.addImportingProductionResource("WOOD", ui->import_wood_input->value(), ui->import_price_wood_input->value());
@@ -76,13 +90,17 @@ void AnalyzingSystem::setAnalyzingData() {
 
 void AnalyzingSystem::startAnalysis() {
     setAnalyzingData();
+    final_plan_builder.clearPlan();
 
     try {
-        FoodRequirementsAnalyzer food_analyzer(&data, &final_plan_builder);
+        //FoodRequirementsAnalyzer food_analyzer(&data, &final_plan_builder);
+        food_analyzer.setAnalyzingData(&data);
+        food_analyzer.setPlanBuilder(&final_plan_builder);
         food_analyzer();
-        LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan_builder, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
+        //LanshaftAnalyzer lanshaft_analyzer(&data, &final_plan_builder, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
+        lanshaft_analyzer.setAllData(&data, &final_plan_builder, data.getMoney() - food_analyzer.getTotalPrice(), 1 - food_analyzer.getOperationCapacity());
         lanshaft_analyzer();
-        FinalPlanWindow plan_window;
+        //FinalPlanWindow plan_window;
         plan_window.setFinalPlan(final_plan_builder.returnPlan());
         plan_window.setModal(true);
         plan_window.updateData();

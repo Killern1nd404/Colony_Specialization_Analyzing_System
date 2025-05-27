@@ -20,7 +20,10 @@ class FoodRequirementsAnalyzer {
     void writeDataInPlan();
 
 public:
-    FoodRequirementsAnalyzer(AnalyzingData *data, FinalPlanBuilder *plan_builder) : data(data), plan_builder(plan_builder) {};
+    //FoodRequirementsAnalyzer(AnalyzingData *data, FinalPlanBuilder *plan_builder) : data(data), plan_builder(plan_builder) {};
+    FoodRequirementsAnalyzer() {};
+    void setAnalyzingData(AnalyzingData *data_) {data=data_;};
+    void setPlanBuilder(FinalPlanBuilder *builder) {plan_builder=builder;};
     void operator()();
     double getOperationCapacity() {return max_potential;};
     string getFoodName() {return food;};

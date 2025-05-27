@@ -24,6 +24,7 @@ public:
     map<string, double> getImportingResources() {return importing_resources;};
     double getTotalPrice() {return total_price;};
     double getTotalOperatingCapacity() {return total_operation_capacity;};
+    void clearPlan();
 };
 \
 class FinalPlanBuilder {
@@ -35,6 +36,7 @@ public:
     void setOptimalBiome(OptimalBiome biome) {plan.setOptimalBiome(biome);};
     void setTotalPrice(double price) {plan.setTotalPrice(price);};
     FinalPlan returnPlan() {return plan;};
+    void clearPlan() {plan.clearPlan();};
 };
 
 #endif // FINALPLAN_H
