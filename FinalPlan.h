@@ -31,6 +31,7 @@ class FinalPlanBuilder {
     FinalPlan plan;
 
 public:
+    FinalPlanBuilder() {};
     void addMakingResourceValue(string resource, double value) {plan.addMakingResourceValue(resource, value);};
     void addImportingResourceValue(string resource, double value) {plan.addImportingResourceValue(resource, value);};
     void setOptimalBiome(OptimalBiome biome) {plan.setOptimalBiome(biome);};

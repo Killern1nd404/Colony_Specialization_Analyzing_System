@@ -40,6 +40,9 @@ bool LanshaftAnalyzer::isHaveDrinkWater() {
 }
 
 void LanshaftAnalyzer::calculateResourceRequirements(string resource, double *price, double *capacity, double requirement) {
+    if (requirement == 0) {
+        return;
+    }
     for (Resource &making_resource : data->getMakingProductionResources()) {
         if (making_resource.name == resource) {
             if (making_resource.max_value*(left_operation_capacity-*capacity) >= requirement) {
@@ -52,7 +55,7 @@ void LanshaftAnalyzer::calculateResourceRequirements(string resource, double *pr
                         for (int i = 0; i < 10; i++) {
                             double capacity_temp = i*0.1;
                             if (capacity_temp + *capacity <= left_operation_capacity) {
-                                double price_temp = (requirement - making_resource.max_value*capacity_temp)/importing_resource.price;
+                                double price_temp = (requirement - making_resource.max_value*capacity_temp)*importing_resource.price;
                                 if (price_temp > left_money - *price) {
                                     throw NotEnoughtResources();
                                 }
