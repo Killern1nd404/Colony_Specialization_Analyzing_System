@@ -2,9 +2,8 @@
 #include <string>
 #include <vector>
 #include "Parameters.h"
-#include <iostream>
-
-using namespace std;
+/*#include <iostream>
+using namespace std;*/
 
 void LanshaftAnalyzer::setAllData(AnalyzingData *data_, FinalPlanBuilder *plan_builder_, double money, double operation_capacity) {
     data=data_;
@@ -56,7 +55,7 @@ void LanshaftAnalyzer::calculateResourceRequirements(string resource, double *pr
                             double capacity_temp = i*0.1;
                             if (capacity_temp + *capacity <= left_operation_capacity) {
                                 double price_temp = (requirement - making_resource.max_value*capacity_temp)*importing_resource.price;
-                                if (price_temp > left_money - *price) {
+                                if (price_temp > left_money - *price || making_resource.max_value + importing_resource.max_value < requirement) {
                                     throw NotEnoughtResources();
                                 }
                                 making_resources_capacity_temp[resource] = capacity_temp;
@@ -74,11 +73,22 @@ void LanshaftAnalyzer::calculateResourceRequirements(string resource, double *pr
     }
 }
 
+void LanshaftAnalyzer::clearTempData() {
+    making_resources_capacity.clear();
+    importing_resources_price.clear();
+    making_resources_capacity_temp.clear();
+    importing_resources_price_temp.clear();
+    total_operation_capacity = 0;
+    total_potential = 0;
+    total_price = 0;
+}
+
 void LanshaftAnalyzer::operator()() {
     if (!isHaveDrinkWater()) {
         throw DrinkWaterSourceNotFounded();
     }
 
+    clearTempData();
     map<string, double> making_resources;
     for (Resource &resource : data->getMakingProductionResources()) {
         making_resources[resource.name] = resource.max_value;
@@ -101,10 +111,12 @@ void LanshaftAnalyzer::operator()() {
                 } catch (NotEnoughtResources error) {
                     is_enought_resources = false;
                 }
+                //cout << biome.name << " " << (1 - min_operation_capacity)*biome.square << " :" << requirements.stone << " " << requirements.wood << " " << requirements.clay << " " << requirements.iron << endl;
                 if (is_enought_resources) {
                     double potential = (1 - min_operation_capacity) * biome.square;
-                    if (potential > total_operation_capacity && min_operation_capacity <= 1) {
+                    if (potential > total_potential && min_operation_capacity <= 1) {
                         total_operation_capacity = min_operation_capacity;
+                        total_potential = potential;
                         total_price = price;
                         optimal_biome.setBiome(biome.name, biome.square, requirements.stone, requirements.wood,
                                                requirements.clay, requirements.iron, requirements.coal);
@@ -124,5 +136,9 @@ void LanshaftAnalyzer::operator()() {
     } else {
         making_resources_capacity[data->getMakingProductionResources().begin()->name] += left_operation_capacity - total_operation_capacity;
         writeDataInPlan();
+        /*for (auto& item: making_resources_capacity) {
+            cout << item.first << " " << item.second << endl;
+        }
+        cout << endl;*/
     }
 }

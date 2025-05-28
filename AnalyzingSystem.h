@@ -18,7 +18,6 @@ class AnalyzingSystem : public QMainWindow {
     Q_OBJECT
     Ui::AnalyzingSystem *ui;
     AnalyzingData data;
-    //FinalPlan final_plan;
     FinalPlanBuilder final_plan_builder;
     FoodRequirementsAnalyzer food_analyzer;
     LanshaftAnalyzer lanshaft_analyzer;

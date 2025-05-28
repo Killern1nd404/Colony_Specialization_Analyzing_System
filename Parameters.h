@@ -95,7 +95,7 @@ struct Parameters {
     vector<string> resources_types = {"STONE", "WOOD", "CLAY", "IRON", "COAL", "FRUIT", "FISH", "SEED", "MEAT"};
     // Возможные требования для развития инфраструктуры в биомах
     map<string, vector<ResourcesRequirements>> biomes_requirements = {
-        {"PLAIN", {{10, 3, 2, 1, 0}, {8, 2, 2, 3, 0}, {2, 4, 8, 2, 0}}},
+        {"PLAIN", {{10, 4, 2, 1, 0}, {8, 2, 2, 3, 0}, {2, 4, 8, 2, 0}}},
         {"HILLS", {{12, 4, 3, 1, 0}, {9, 3, 3, 3, 0}, {3, 5, 9, 2, 0}}},
         {"MOUNTAINS", {{10, 18, 0, 6, 0}, {4, 18, 8, 6, 0}}},
         {"SWAMP", {{10, 15, 0, 4, 0}, {4, 18, 6, 4, 0}}},

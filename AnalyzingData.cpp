@@ -3,8 +3,6 @@
 #include <vector>
 #include "Parameters.h"
 
-using namespace std;
-
 AnalyzingData::AnalyzingData() {
 }
 
